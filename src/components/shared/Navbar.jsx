@@ -16,7 +16,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="bg-base-100 text-slate-900 shadow-md">
+    <div className="bg-base-100 text-slate-900 ">
       <div className="navbar container mx-auto flex items-center justify-between py-4 px-6">
         {/* Navbar Start */}
         <div className="flex items-center">
