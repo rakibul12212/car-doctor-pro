@@ -1,11 +1,10 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import SocialSignIn from "@/components/shared/SocialSignIn";
 
 const LogInPage = () => {
   const router = useRouter();
@@ -62,14 +61,7 @@ const LogInPage = () => {
           </form>
           <div>
             <h6 className="my-8 text-center">or sign in with</h6>
-            <div className="flex justify-center items-center space-x-3">
-              <button className="btn  rounded-full flex items-center justify-center ">
-                <FcGoogle className="size-6" />
-              </button>
-              <button className="btn  rounded-full flex items-center justify-center ">
-                <FaGithub className="size-6" />
-              </button>
-            </div>
+            <SocialSignIn />
             <div>
               <h6 className="my-8 text-center">
                 not have an account?{" "}
