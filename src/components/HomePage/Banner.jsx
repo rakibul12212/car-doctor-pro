@@ -32,7 +32,7 @@ const Banner = () => {
     },
   ];
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto text-white">
       <div className="carousel w-full mt-12">
         <div id="slide1" className="carousel-item relative w-full ">
           {banners.map((banner, index) => (
