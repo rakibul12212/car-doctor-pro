@@ -1,4 +1,5 @@
 "use client";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -14,7 +15,7 @@ const Navbar = () => {
     { title: "Blog", path: "/blog" },
     { title: "Contacts", path: "/contacts" },
   ];
-
+  const session = useSession();
   return (
     <div className="bg-base-100 text-slate-900 ">
       <div className="navbar container mx-auto flex items-center justify-between py-4 px-6">
@@ -59,9 +60,18 @@ const Navbar = () => {
           <IoCartOutline className="text-xl" />
           <IoSearchSharp className="text-xl" />
           <a className="btn btn-outline btn-primary px-8">Appointment</a>
-          <Link href={"/login"} className="btn btn-primary px-8">
+          {/* <Link href={"/login"} className="btn btn-primary px-8">
             Log In
-          </Link>
+          </Link> */}
+          {!session.data ? (
+            <Link href={"/login"} className="btn btn-primary px-8">
+              Log In
+            </Link>
+          ) : (
+            <button onClick={() => signOut()} className="btn btn-primary px-8">
+              Logout
+            </button>
+          )}
         </div>
       </div>
 

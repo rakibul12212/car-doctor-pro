@@ -5,8 +5,10 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const LogInPage = () => {
+  const router = useRouter();
   const handleLogin = async (event) => {
     event.preventDefault();
     const email = event.target.email.value;
@@ -15,7 +17,10 @@ const LogInPage = () => {
       email,
       password,
       redirect: false,
-     });
+    });
+    if (resp.status === 200) {
+      router.push("/");
+    }
   };
   return (
     <div className="container mx-auto px-24 py-24">
