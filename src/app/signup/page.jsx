@@ -5,8 +5,17 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
 
-const page = () => {
-  const handleLogin = async () => {};
+const SignUpPage = () => {
+  const handleSignUp = async (event) => {
+    event.preventDefault();
+    const newUser = {
+      name: event.target.name.value,
+      email: event.target.email.value,
+      password: event.target.password.value,
+    };
+    console.log(newUser);
+  };
+
   return (
     <div className="container mx-auto px-24 py-24">
       <div className="grid grid-cols-2 gap-12 items-center">
@@ -22,7 +31,7 @@ const page = () => {
           <h6 className="text-3xl font-semibold text-primary text-center mb-12">
             SignUp
           </h6>
-          <form onSubmit={handleLogin} action="">
+          <form onSubmit={handleSignUp} action="">
             <label htmlFor="name">Name</label>
             <br />
             <input
@@ -79,4 +88,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default SignUpPage;

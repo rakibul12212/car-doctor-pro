@@ -5,7 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
 
-const page = () => {
+const LogInPage = () => {
   const handleLogin = async () => {};
   return (
     <div className="container mx-auto px-24 py-24">
@@ -70,4 +70,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default LogInPage;
