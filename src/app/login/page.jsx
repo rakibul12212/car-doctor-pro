@@ -4,9 +4,19 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 const LogInPage = () => {
-  const handleLogin = async () => {};
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    const resp = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+     });
+  };
   return (
     <div className="container mx-auto px-24 py-24">
       <div className="grid grid-cols-2 gap-12 items-center">
