@@ -60,15 +60,7 @@ const Navbar = () => {
           <IoCartOutline className="text-xl" />
           <IoSearchSharp className="text-xl" />
           <a className="btn btn-outline btn-primary px-8">Appointment</a>
-          {session?.data?.user?.image && (
-            <Image
-              alt={session?.data?.user?.name || "User avatar"}
-              src={session.data.user.image}
-              height={50}
-              width={50}
-              className="rounded-full"
-            />
-          )}
+
           {/* <Link href={"/login"} className="btn btn-primary px-8">
             Log In
           </Link> */}
@@ -77,9 +69,21 @@ const Navbar = () => {
               Log In
             </Link>
           ) : (
-            <button onClick={() => signOut()} className="btn btn-primary px-8">
+            <button
+              onClick={() => signOut()}
+              className="btn btn-outline btn-primary px-8"
+            >
               Logout
             </button>
+          )}
+          {session?.data?.user?.image && (
+            <Image
+              alt={session?.data?.user?.name || "User avatar"}
+              src={session.data.user.image}
+              height={50}
+              width={50}
+              className="rounded-full"
+            />
           )}
         </div>
       </div>

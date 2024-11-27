@@ -1,8 +1,15 @@
 import React from "react";
-import { services } from "../../lib/services";
 import ServiceCard from "../cards/ServiceCard";
 
-const Services = () => {
+const getServices = async () => {
+  const res = await fetch("http://localhost:3000/services/api/get-all");
+  const services = res.json();
+  return services;
+};
+
+const Services = async () => {
+  const { services } = await getServices();
+
   return (
     <div className="text-slate-800 min-h-screen">
       <div className="text-center container mx-auto space-y-6">
@@ -16,9 +23,10 @@ const Services = () => {
       </div>
       <div className="flex justify-center items-center min-h-screen">
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
-          {services.map((service) => (
-            <ServiceCard service={service} key={service._id} />
-          ))}
+          {services?.length > 0 &&
+            services.map((service) => (
+              <ServiceCard service={service} key={service._id} />
+            ))}
         </div>
       </div>
     </div>
