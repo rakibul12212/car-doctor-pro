@@ -8,6 +8,7 @@ import SocialSignIn from "@/components/shared/SocialSignIn";
 
 const LogInPage = () => {
   const router = useRouter();
+
   const handleLogin = async (event) => {
     event.preventDefault();
     const email = event.target.email.value;
@@ -21,6 +22,7 @@ const LogInPage = () => {
       router.push("/");
     }
   };
+
   return (
     <div className="container mx-auto px-24 py-24">
       <div className="grid grid-cols-2 gap-12 items-center">
