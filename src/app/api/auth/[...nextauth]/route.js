@@ -1,15 +1,16 @@
+import { connectDB } from "@/lib/connectDB";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 import bcrypt from "bcrypt";
-import { connectDB } from "@/lib/connectDB";
 
 const handler = NextAuth({
   secret: process.env.NEXT_PUBLIC_AUTH_SECRET,
   session: {
     strategy: "jwt",
-    maxAge: 30 * 20 * 60 * 60,
+    maxAge: 30 * 24 * 60 * 60,
+    rolling: false,
   },
   providers: [
     CredentialsProvider({
@@ -19,7 +20,6 @@ const handler = NextAuth({
       },
       async authorize(credentials) {
         const { email, password } = credentials;
-
         if (!email || !password) {
           return null;
         }
@@ -58,7 +58,6 @@ const handler = NextAuth({
           const db = await connectDB();
           const userCollection = db.collection("users");
           const userExist = await userCollection.findOne({ email });
-
           if (!userExist) {
             const res = await userCollection.insertOne(user);
             return user;
@@ -74,4 +73,5 @@ const handler = NextAuth({
     },
   },
 });
+
 export { handler as GET, handler as POST };
